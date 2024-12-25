@@ -1,0 +1,11 @@
+<button
+  class="toggle-button w-full px-4 py-2 font-bold transition"
+  [ngClass]="
+    groupService.selectedGroup() === group._id
+      ? 'bg-primary text-white'
+      : 'bg-primary-light text-black'
+  "
+  (click)="handleSelectGroup()"
+>
+  {{ group.name }}
+</button>

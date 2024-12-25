@@ -1,0 +1,36 @@
+<nav class="fixed w-full py-4 z-10">
+  <div class="px-8 flex justify-between items-center">
+    <p class="text-xl font-bold text-primary">Logo</p>
+    <div class="flex gap-8 items-center">
+      <a class="font-semibold" routerLink="/" fragment="home">Home</a>
+      <a class="font-semibold" routerLink="/" fragment="about">About</a>
+      <a class="font-semibold" routerLink="/" fragment="services">Services</a>
+      <a class="font-semibold" routerLink="/" fragment="contact">Contact</a>
+      <ng-container *ngIf="authService.isLoggedIn(); else loginButton">
+        <a class="font-semibold" routerLink="/dashboard">Dashboard</a>
+
+        <ng-container
+          *ngIf="
+            authService.isLoggedIn() && authService.currentUser() as currentUser
+          "
+        >
+          <p class="font-semibold">Welcome, {{ currentUser?.name }}</p>
+          <app-button
+            label="Logout"
+            (onClick)="handleLogout()"
+            customClass="px-6"
+          ></app-button>
+        </ng-container>
+      </ng-container>
+
+      <ng-template #loginButton>
+        <app-button
+          label="Login"
+          (onClick)="handleLogin()"
+          customClass="px-6"
+        ></app-button>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+<ng-content></ng-content>

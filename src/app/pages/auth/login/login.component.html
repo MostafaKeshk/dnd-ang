@@ -1,0 +1,30 @@
+<div
+  class="container mx-auto lg:px-8 px-4 flex justify-center h-full gap-4 flex-col w-[80%] min-w-[300px]"
+>
+  <h1 class="text-5xl text-center text-primary font-bold">
+    Welcome to Drag & Drop
+  </h1>
+  <form [formGroup]="loginForm" class="flex flex-col gap-2">
+    <app-input
+      [control]="getFormControl('email')"
+      label="Email"
+      placeholder="Enter your email"
+      [validationMessages]="validationMessages"
+    />
+    <app-input
+      [control]="getFormControl('password')"
+      label="Password"
+      type="password"
+      placeholder="Enter your password"
+      [validationMessages]="validationMessages"
+    />
+
+    <app-button [isLoading]="loading" (onClick)="onSubmit()" label="Login" />
+  </form>
+
+  <p class="text-center">
+    No account yet?
+    <a routerLink="/auth/signup" class="text-primary underline">Sign up</a>
+    now!
+  </p>
+</div>

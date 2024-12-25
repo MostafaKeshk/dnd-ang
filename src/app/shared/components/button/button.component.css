@@ -1,0 +1,20 @@
+button[disabled] {
+  cursor: not-allowed;
+  background-color: #ccc; /* Disabled button color */
+}
+.loader {
+  border: 2px solid transparent; /* Invisible border */
+  border-top: 2px solid white; /* Spinner color */
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

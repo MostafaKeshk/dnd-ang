@@ -1,0 +1,67 @@
+<div class="bg-white h-screen">
+  <ng-container *ngIf="groupService.selectedGroup(); else noGroupSelected">
+    <div class="flex justify-between items-center w-full">
+      <p class="text-md font-semibold">Tasks</p>
+      <app-button label="Add Task" (onClick)="handleOpenDialog()" />
+    </div>
+
+    <div *ngIf="taskService.fetchLoading()" class="loading-spinner">
+      Loading...
+    </div>
+
+    <div *ngIf="!taskService.fetchLoading()">
+      <div class="grid grid-cols-3 gap-4">
+        <!-- Todo Tasks List -->
+        <div
+          cdkDropList
+          id="todoList"
+          [cdkDropListData]="todoTasks()"
+          [cdkDropListConnectedTo]="['inProgressList', 'doneList']"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <h2>Todo Tasks</h2>
+          <div *ngFor="let task of todoTasks(); trackBy: trackById" cdkDrag>
+            <app-task-card [task]="task"></app-task-card>
+          </div>
+        </div>
+
+        <!-- In Progress Tasks List -->
+        <div
+          cdkDropList
+          id="inProgressList"
+          [cdkDropListData]="inProgressTasks()"
+          [cdkDropListConnectedTo]="['todoList', 'doneList']"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <h2>In Progress Tasks</h2>
+          <div
+            *ngFor="let task of inProgressTasks(); trackBy: trackById"
+            cdkDrag
+          >
+            <app-task-card [task]="task"></app-task-card>
+          </div>
+        </div>
+
+        <!-- Done Tasks List -->
+        <div
+          cdkDropList
+          id="doneList"
+          [cdkDropListData]="doneTasks()"
+          [cdkDropListConnectedTo]="['todoList', 'inProgressList']"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <h2>Done Tasks</h2>
+          <div *ngFor="let task of doneTasks(); trackBy: trackById" cdkDrag>
+            <app-task-card [task]="task"></app-task-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-task-dialog [open]="openDialog" />
+  </ng-container>
+
+  <ng-template #noGroupSelected>
+    <p>Please select a group</p>
+  </ng-template>
+</div>

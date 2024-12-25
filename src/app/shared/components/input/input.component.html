@@ -1,0 +1,17 @@
+<div [class]="'flex flex-col gap-1 ' + customClass">
+  <label
+    class="text-lg text-primary"
+    [ngClass]="{ 'text-red-500': control.invalid && control.touched }"
+    >{{ label }}</label
+  >
+  <input
+    [type]="type"
+    [placeholder]="placeholder"
+    class="border rounded px-4 py-2 focus:outline-none focus:ring-2 border-primary"
+    [formControl]="control"
+    [ngClass]="{ 'border-red-500': control.invalid && control.touched }"
+  />
+  <div NgIf="control.invalid && control.touched" class="text-red-500 text-sm">
+    {{ getErrorMessage() }}
+  </div>
+</div>

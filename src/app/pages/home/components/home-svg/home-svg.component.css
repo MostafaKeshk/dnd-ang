@@ -1,0 +1,65 @@
+svg#freepik_stories-personal-goals-checklist:not(.animated) .animable {
+  opacity: 0;
+}
+svg#freepik_stories-personal-goals-checklist.animated
+  #freepik--background-complete--inject-28 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+svg#freepik_stories-personal-goals-checklist.animated
+  #freepik--Notebook--inject-28 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) slideUp,
+    3s Infinite linear floating;
+  animation-delay: 0.5s, 1s;
+  opacity: 0;
+}
+svg#freepik_stories-personal-goals-checklist.animated
+  #freepik--Plant--inject-28 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+svg#freepik_stories-personal-goals-checklist.animated
+  #freepik--Character--inject-28 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+svg#freepik_stories-personal-goals-checklist.animated #freepik--Cat--inject-28 {
+  animation: 0.5s 1 forwards cubic-bezier(0.36, -0.01, 0.5, 1.38) fadeIn;
+  animation-delay: 0s;
+}
+svg#freepik_stories-personal-goals-checklist.animated
+  #freepik--speech-bubble--inject-28 {
+  animation: 1.5s Infinite linear floating;
+  animation-delay: 0s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: inherit;
+  }
+}
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

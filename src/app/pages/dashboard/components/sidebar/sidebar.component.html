@@ -1,0 +1,19 @@
+<div class="bg-white h-screen w-[250px] py-[1.6rem] px-8 z-10 fixed">
+  <p class="text-xl font-bold text-primary">Logo</p>
+
+  <p class="text-md font-semibold mt-4">Groups</p>
+
+  <div *ngIf="groupService.fetchLoading()" class="loading-spinner">
+    Loading...
+  </div>
+
+  <div *ngIf="!groupService.fetchLoading()">
+    <div *ngFor="let group of groupService.groups(); trackBy: trackById">
+      <app-group-card [group]="group"></app-group-card>
+    </div>
+  </div>
+
+  <app-button label="Add Group" (onClick)="handleOpenDialog()" />
+
+  <app-group-dialog [open]="openDialog" />
+</div>
